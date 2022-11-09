@@ -1,22 +1,4 @@
-
-import os
-
 import discord
-from dotenv import load_dotenv
-
-load_dotenv()
-TOKEN = os.getenv('1034381386515234852')
-
-client = discord.Client()
-
-@client.event
-async def on_ready():
-    print(f'{client.user} has connected to Discord!')
-
-client.run(TOKEN)
-
-
-
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -35,5 +17,4 @@ async def on_message(message):
     if message.content.startswith('$hello'):
         await message.channel.send('Hello!')
 
-client.run('your token here')
-
+client.run('1034761484305186876')
