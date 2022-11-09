@@ -1,3 +1,5 @@
+# This example requires the 'message_content' intent.
+
 import discord
 
 intents = discord.Intents.default()
@@ -17,4 +19,4 @@ async def on_message(message):
     if message.content.startswith('$hello'):
         await message.channel.send('Hello!')
 
-client.run('1034761484305186876')
+client.run('MTAzNDc2MTQ4NDMwNTE4Njg3Ng.GQt7gk.RexGUYAlgVVKBjbeEcvuglQUOLrWX9-iA5KVpk')
