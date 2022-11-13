@@ -3,8 +3,8 @@ import pandas as pd
 import plotly.express as plt
 import plotly.graph_objects as go
 
-APIkey = "19e55afb-07fc-4b68-b3b8-74c7950f0aee"'''
-df = pd.DataFrame(columns = ['country', 'state', 'city', 'latitude', 'longitude', 'AQI'])'''
+APIkey = "19e55afb-07fc-4b68-b3b8-74c7950f0aee"
+df = pd.DataFrame(columns = ['country', 'state', 'city', 'latitude', 'longitude', 'AQI'])
 
 
 
