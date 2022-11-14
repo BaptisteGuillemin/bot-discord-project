@@ -28,9 +28,9 @@ async def on_message(message):
         await message.channel.send("--------")
         await message.channel.send('In which country are you interested to know the current Air Quality Index ?')
         await message.channel.send("Bot developpement in progress...")
+'''
 
 user_answer = input("Did you want to check and plot on a map the air quality somewhere ? yes or no")
-'''
 while True:
   count=0
   print(get_all_countries())
