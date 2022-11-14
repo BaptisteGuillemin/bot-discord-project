@@ -1,9 +1,9 @@
-ETAPE1 = Vide
+ETAPE1 = 'Vide'
 async def on_message(message):
     if message.author == client.user:
         return
     if message.content.startswith('hello'):
-        While ETAPE1 == Vide:
+        While ETAPE1 == 'Vide':
             await message.channel.send(f'Hello!! {message.author.name}')
             await message.channel.send('Did you want to check and plot on a map the air quality somewhere ? Yes or No.')
             await message.channel.send("--------")
