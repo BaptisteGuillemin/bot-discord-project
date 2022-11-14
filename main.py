@@ -8,8 +8,8 @@ df = pd.DataFrame(columns = ['country', 'state', 'city', 'latitude', 'longitude'
 
 
 
-##Personal information of the bit
-TOKEN = 'MTAzNDc2MTQ4NDMwNTE4Njg3Ng.GQt7gk.RexGUYAlgVVKBjbeEcvuglQUOLrWX9-iA5KVpk'
+## Bot informations 
+TOKEN = 'MTAzNDc2MTQ4NDMwNTE4Njg3Ng.G8kEmq.fILIt8muCpHVlrmek42IZXEDsKQm7b7xxg_iE4'
 ##Discord channel also know as guild
 GUILD = 'PGE4 ADAV 2022-23'
 
