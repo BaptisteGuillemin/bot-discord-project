@@ -86,15 +86,6 @@ def get_aqius(city, state, country):
 
     return df
 
-DF = DF.append(get_aqius('Montreuil','Ile-de-France','France'), ignore_index=True)
-DF
-
-DF = DF.append(get_aqius('Blandy','Ile-de-France','France'))
-DF
-
-DF = DF.append(get_aqius('Canberra','ACT','Australia'))
-DF
-
 """## Visualization functions
 
 
@@ -211,7 +202,7 @@ def zoom_center(lons: tuple=None, lats: tuple=None, lonlats: tuple=None,
     
     return zoom, center
 
-user_answer = input("Did you want to check and plot on a map the air quality somewhere ? yes or no")
+'''user_answer = input("Did you want to check and plot on a map the air quality somewhere ? yes or no")
 if user_answer.lower() == 'no': print("Ok, an another time")
 else: 
     countries = get_all_countries()
@@ -233,5 +224,5 @@ else:
       get_labels()
 
       loop = input("Would like to plot another city's AQI on the map ? yes or no")
-      if loop == "no": break
+      if loop == "no": break'''
 
