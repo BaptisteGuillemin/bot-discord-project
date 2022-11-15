@@ -50,7 +50,7 @@ async def on_message(message):
         def check_State(m):
             return m.content in states and m.channel == channel
         
-        msg_state = await client.wait_for('message', check=check_country)
+        msg_state = await client.wait_for('message', check=check_State)
         Selected_state = msg_state.content
         await message.channel.send('Here is the state selected : ' + Selected_state)
         await message.channel.send("--------")
@@ -64,7 +64,7 @@ async def on_message(message):
         def check_city(m):
             return m.content in List_cities and m.channel == channel
         
-        msg_city = await client.wait_for('message', check=check_country)
+        msg_city = await client.wait_for('message', check=check_city)
         Selected_city = msg_city.content
         await message.channel.send('Here is the city selected : ' + Selected_city)
         await message.channel.send("--------")
