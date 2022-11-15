@@ -16,16 +16,20 @@ GUILD = 'PGE4 ADAV 2022-23'
 intents = discord.Intents.default()
 intents.message_content = True
 client = discord.Client(intents=intents)
+List_countries['France','Spain']
 
-##To know about the bot id, discord channel and bot name
 @client.event
 async def on_ready():
-    for guild in client.guilds:
-        if guild.name == GUILD:
-            break
+    print(f'We have logged in as {client.user}')
+@client.event
+async def on_message(message):
+    if message.content.startswith('$greet'):
+        channel = message.channel
+        await channel.send('Say hello!')
 
-    print(
-        f'{client.user} is connected to the following guild:\n'
-        f'{guild.name}(id: {guild.id})')
+        def check(m):
+            return m.content in List_countries and m.channel == channel
 
+        msg = await client.wait_for('message', check=check)
+        await channel.send(f'Hello {msg.author}!')
 client.run(TOKEN)
