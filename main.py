@@ -1,5 +1,6 @@
 import discord
 import pandas as pd
+import 
 
 APIkey = "19e55afb-07fc-4b68-b3b8-74c7950f0aee"
 df = pd.DataFrame(columns = ['country', 'state', 'city', 'latitude', 'longitude', 'AQI'])
@@ -22,21 +23,46 @@ async def on_ready():
     print(f'We have logged in as {client.user}')
 @client.event
 async def on_message(message):
-    if message.content.startswith('$countries'):
+    if message.content.startswith('$Call_Bot' or 'Call'):
         channel = message.channel
+        await message.channel.send('I Can plot on a map the air quality or a city that we will choose !')
+        await message.channel.send("--------")
+
+        #Select the country
         await message.channel.send('Here are the countries where I can provide you the Air Quality Index')
         await message.channel.send(List_countries)
 
         def check_country(m):
             return m.content in List_countries and m.channel == channel
 
-        msg = await client.wait_for('message', check=check_country)
-        Selected_country = msg.content
+        msg_country = await client.wait_for('message', check=check_country)
+        Selected_country = msg_country.content
         await message.channel.send('Here is the country selected : ' + Selected_country)
+        await message.channel.send("--------")
+
+        #Select the state
         await message.channel.send('After that I will need the State where you want to see the AQI')
         await message.channel.send('Here is the list of the States that you can choose')
         await message.channel.send(List_states)
 
         def check_State(m):
-            return m.content in List_countries and m.channel == channel
+            return m.content in List_states and m.channel == channel
+        
+        msg_state = await client.wait_for('message', check=check_country)
+        Selected_state = msg_state.content
+        await message.channel.send('Here is the state selected : ' + Selected_state)
+        await message.channel.send("--------")
+        
+        #Select the city
+        await message.channel.send('After that I will need the city where you want to see the AQI')
+        await message.channel.send('Here is the list of the cities that you can choose')
+        await message.channel.send(List_cities)
+
+        def check_city(m):
+            return m.content in List_citys and m.channel == channel
+        
+        msg_city = await client.wait_for('message', check=check_country)
+        Selected_city = msg_city.content
+        await message.channel.send('Here is the city selected : ' + Selected_city)
+        await message.channel.send("--------")
 client.run(TOKEN)
