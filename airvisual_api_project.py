@@ -102,6 +102,7 @@ def get_aqius(city, state, country):
 """
 
 def map_df(df):
+    df['AQI'] = pd.to_numeric(df["AQI"])  # to avoid size error
     color_scale = [(0, 'lime'), (0.2, 'green'), (0.3, 'yellow'), (0.4, 'orange'), (0.6, 'red'), (1,'black')]
     range_color = [1, 500]
 
