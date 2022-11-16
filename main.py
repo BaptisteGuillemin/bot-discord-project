@@ -23,17 +23,17 @@ async def on_ready():
 @client.event
 async def on_message(message):
     if message.content.startswith('$Call_Bot'):
+
         channel = message.channel
         await message.channel.send('I can plot on a map the air quality of a city that we will choose !')
         await message.channel.send("If you want to see an example, and visualize Cachan's Air Quality, Answer: 'Yes', Else: 'No")
         await message.channel.send("--------")
 
-        
-            
-        if message.content == 'Yes' and message.author == client.user:    
+                    
+        if message.content == 'Yes' and message.author != client.user:    
             await message.channel.send("You have typped Yes")
             
-        elif message.content == 'No' and message.author == client.user: 
+        elif message.content == 'No' and message.author != client.user: 
         
             await message.channel.send("You have typped No")
 
@@ -81,7 +81,7 @@ async def on_message(message):
 
             await message.channel.send("Here is the localisation selected : " + "Country : " + Selected_country + ", State : " + Selected_state + ", City : " + Selected_city)
 
-        elif message.content != 'No' and message.content != 'Yes' and message.author == client.user: 
+        elif message.content != 'No' and message.content != 'Yes' and message.author != client.user: 
             await message.channel.send("I didn't understood the answer, please, try again")
             await message.channel.send("--------")
             await message.channel.send("$Call_Bot")
