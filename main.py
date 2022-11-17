@@ -8,7 +8,7 @@ import airvisual_api_project as API_Visu
 
 
 ## Bot informations 
-TOKEN = 'MTAzNDc2MTQ4NDMwNTE4Njg3Ng.GbTx7f.tS4ufSJ82oNMFXziItiK-9ommAqR9T2nDDu3bk'
+TOKEN = 'MTAzNDc2MTQ4NDMwNTE4Njg3Ng.GUgzR1.vnjE0PtnFrlaiAZThUG2K71b30pnJ5gxOcOSEI'
 ##Discord channel also know as guild
 GUILD = 'PGE4 ADAV 2022-23'
 
@@ -28,61 +28,64 @@ async def on_message(message):
         await message.channel.send('I can plot on a map the air quality of a city that we will choose !')
         await message.channel.send("If you want to see an example, and visualize Cachan's Air Quality, Answer: 'Yes', Else: 'No")
         await message.channel.send("--------")
+        print(f'message author: {message.author}')
+        print(f'message content: {message.content}')
 
-                    
-        if message.content == 'Yes' and message.author != client.user:    
-            await message.channel.send("You have typped Yes")
+    if message.content.startswith('Yes') :    
+        await message.channel.send("You have typped Yes")
+        print(f'message author: {message.author}')
+        print(f'message content: {message.content}')
+        API_Visu.get_aqius('Paris', 'Ile-de-France', 'France')
+
+
             
-        elif message.content == 'No' and message.author != client.user: 
+    if message.content.startswith('No'): 
+        await message.channel.send("You have typped No")
+        print(f'message author: {message.author}')
+        print(f'message content: {message.content}')
+
+        #Select the country
+        list_countries = API_Visu.get_all_countries()
+        await message.channel.send('Here are the countries where I can provide you the Air Quality Index')
+        await message.channel.send(list_countries)
+
+        def check_country(m):
+            return m.content in list_countries and m.channel == channel
+
+        msg_country = await client.wait_for('message', check=check_country)
+        Selected_country = msg_country.content
+        await message.channel.send('Here is the country selected : ' + Selected_country)
+        await message.channel.send("--------")
         
-            await message.channel.send("You have typped No")
 
-            #Select the country
-            list_countries = API_Visu.get_all_countries()
-            await message.channel.send('Here are the countries where I can provide you the Air Quality Index')
-            await message.channel.send(list_countries)
+        #Select the state
+        states = API_Visu.get_state(Selected_country)
+        await message.channel.send('After that I will need the State where you want to see the AQI')
+        await message.channel.send('Here is the list of the States that you can choose')
+        await message.channel.send(states)
 
-            def check_country(m):
-                return m.content in list_countries and m.channel == channel
+        def check_State(m):
+            return m.content in states and m.channel == channel
+        
+        msg_state = await client.wait_for('message', check=check_State)
+        Selected_state = msg_state.content
+        await message.channel.send('Here is the state selected : ' + Selected_state)
+        await message.channel.send("--------")
+        
+        #Select the city
+        List_cities = API_Visu.get_city(Selected_state, Selected_country)
+        await message.channel.send('After that I will need the city where you want to see the AQI')
+        await message.channel.send('Here is the list of the cities that you can choose')
+        await message.channel.send(List_cities)
 
-            msg_country = await client.wait_for('message', check=check_country)
-            Selected_country = msg_country.content
-            await message.channel.send('Here is the country selected : ' + Selected_country)
-            await message.channel.send("--------")
-            
+        def check_city(m):
+            return m.content in List_cities and m.channel == channel
+        
+        msg_city = await client.wait_for('message', check=check_city)
+        Selected_city = msg_city.content
+        await message.channel.send('Here is the city selected : ' + Selected_city)
+        await message.channel.send("--------")
 
-            #Select the state
-            states = API_Visu.get_state(Selected_country)
-            await message.channel.send('After that I will need the State where you want to see the AQI')
-            await message.channel.send('Here is the list of the States that you can choose')
-            await message.channel.send(states)
+        await message.channel.send("Here is the localisation selected : " + "Country : " + Selected_country + ", State : " + Selected_state + ", City : " + Selected_city)
 
-            def check_State(m):
-                return m.content in states and m.channel == channel
-            
-            msg_state = await client.wait_for('message', check=check_State)
-            Selected_state = msg_state.content
-            await message.channel.send('Here is the state selected : ' + Selected_state)
-            await message.channel.send("--------")
-            
-            #Select the city
-            List_cities = API_Visu.get_city(Selected_state, Selected_country)
-            await message.channel.send('After that I will need the city where you want to see the AQI')
-            await message.channel.send('Here is the list of the cities that you can choose')
-            await message.channel.send(List_cities)
-
-            def check_city(m):
-                return m.content in List_cities and m.channel == channel
-            
-            msg_city = await client.wait_for('message', check=check_city)
-            Selected_city = msg_city.content
-            await message.channel.send('Here is the city selected : ' + Selected_city)
-            await message.channel.send("--------")
-
-            await message.channel.send("Here is the localisation selected : " + "Country : " + Selected_country + ", State : " + Selected_state + ", City : " + Selected_city)
-
-        elif message.content != 'No' and message.content != 'Yes' and message.author != client.user: 
-            await message.channel.send("I didn't understood the answer, please, try again")
-            await message.channel.send("--------")
-            await message.channel.send("$Call_Bot")
 client.run(TOKEN)
