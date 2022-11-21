@@ -26,21 +26,22 @@ async def on_message(message):
 
         channel = message.channel
         await message.channel.send('I can plot on a map the air quality of a city that we will choose !')
-        await message.channel.send("If you want to see an example, and visualize Cachan's Air Quality, Answer: 'Yes', Else: 'No")
+        await message.channel.send("If you want to see an example, and visualize Cachan's Air Quality, Answer: '$Get_example', Else answer: '$Specific_AQI' ")
         await message.channel.send("--------")
         print(f'message author: {message.author}')
         print(f'message content: {message.content}')
 
-    if message.content.startswith('Yes') :    
+    if message.content.startswith('$Get_example') :    
         await message.channel.send("You have typped Yes")
         print(f'message author: {message.author}')
         print(f'message content: {message.content}')
         API_Visu.get_aqius('Paris', 'Ile-de-France', 'France')
+        API_Visu.map_df(df)
 
 
             
-    if message.content.startswith('No'): 
-        await message.channel.send("You have typped No")
+    if message.content.startswith('$Specific_AQI'): 
+        await message.channel.send("Let's choose where you want to visualize the Air Qualit Index !")
         print(f'message author: {message.author}')
         print(f'message content: {message.content}')
 
