@@ -1,9 +1,3 @@
-import pandas as pd
-import discord
-import requests
-import plotly.express as plt
-import plotly.graph_objects as go
-
 import airvisual_api_project as API_Visu
 
 
