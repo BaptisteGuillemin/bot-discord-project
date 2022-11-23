@@ -11,7 +11,7 @@ import requests
 import plotly.express as plt
 import plotly.graph_objects as go
 APIkey = "19e55afb-07fc-4b68-b3b8-74c7950f0aee"
-df = pd.DataFrame(columns = ['country', 'state', 'city', 'latitude', 'longitude', 'AQI'])
+DF = pd.DataFrame(columns = ['country', 'state', 'city', 'latitude', 'longitude', 'AQI'])
 
 """##Principals functions to process data"""
 
@@ -236,4 +236,10 @@ else:
 
       loop = input("Would like to plot another city's AQI on the map ? yes or no")
       if loop == "no": break'''
+
+def get_default_visu(city,state,country):
+    DF = get_aqius(city, state, country)  
+    # print visualisation
+    map_df(DF)
+    get_labels()
 
