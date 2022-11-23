@@ -238,7 +238,8 @@ else:
       if loop == "no": break'''
 
 def get_default_visu(city,state,country):
-    DF = get_aqius(city, state, country)  
+    DF = pd.DataFrame(columns = ['country', 'state', 'city', 'latitude', 'longitude', 'AQI'])
+    DF = DF.append(get_aqius(city, state, country))  
     # print visualisation
     map_df(DF)
     get_labels()
