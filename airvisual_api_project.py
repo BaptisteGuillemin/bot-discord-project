@@ -7,9 +7,11 @@ Original file is located at
     https://colab.research.google.com/drive/1KGfGPiJGVAEgo_WOgxpUthfwQDOqV7hs
 """
 import pandas as pd
+import discord
 import requests
 import plotly.express as plt
 import plotly.graph_objects as go
+
 APIkey = "19e55afb-07fc-4b68-b3b8-74c7950f0aee"
 DF = pd.DataFrame(columns = ['country', 'state', 'city', 'latitude', 'longitude', 'AQI'])
 
