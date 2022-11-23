@@ -244,3 +244,10 @@ def get_default_visu(city,state,country):
     map_df(DF)
     get_labels()
 
+    '''
+    chart = discord.File(data_stream, filename="standing.png")
+    embed = discord.Embed(title=competition_name + " standings",
+                            description="Give the standings for " + competition_name + " competition", color=0x00ff00)
+    embed.set_image(url="attachment://standing.png")
+    await message.channel.send(embed=embed, file=chart)
+    '''
