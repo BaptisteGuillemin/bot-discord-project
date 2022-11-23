@@ -108,7 +108,7 @@ def map_df(df):
 
     fig = plt.scatter_mapbox(df, lat="longitude", lon="latitude", hover_name="city", hover_data=["city", "AQI"], opacity=1,
                             color="AQI", color_continuous_scale= color_scale, range_color=range_color,
-                            size='AQI', size_max=10, zoom=6, height=400, width=500)
+                            size='AQI', size_max=10, zoom=6, height=400, width=600)
 
     fig.update_layout(mapbox_style='carto-positron')
     fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
@@ -239,8 +239,7 @@ else:
 
 def get_default_visu(city,state,country):
     DF = pd.DataFrame(columns = ['country', 'state', 'city', 'latitude', 'longitude', 'AQI'])
-    DF = DF.append(get_aqius(city, state, country))  
-    # print visualisation
+    DF = DF.append(get_aqius(city, state, country))
     map_df(DF)
     get_labels()
 
