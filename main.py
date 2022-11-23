@@ -1,5 +1,5 @@
 import airvisual_api_project as API_Visu
-
+import discord
 
 ## Bot informations 
 TOKEN = 'MTAzNDc2MTQ4NDMwNTE4Njg3Ng.GUgzR1.vnjE0PtnFrlaiAZThUG2K71b30pnJ5gxOcOSEI'

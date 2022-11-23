@@ -7,7 +7,6 @@ Original file is located at
     https://colab.research.google.com/drive/1KGfGPiJGVAEgo_WOgxpUthfwQDOqV7hs
 """
 import pandas as pd
-import discord
 import requests
 import plotly.express as plt
 import plotly.graph_objects as go
