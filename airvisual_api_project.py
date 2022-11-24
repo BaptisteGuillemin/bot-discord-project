@@ -8,8 +8,11 @@ Original file is located at
 """
 import pandas as pd
 import requests
+import plotly
 import plotly.express as plt
 import plotly.graph_objects as go
+import plotly.io as pio
+
 APIkey = "19e55afb-07fc-4b68-b3b8-74c7950f0aee"
 DF = pd.DataFrame(columns = ['country', 'state', 'city', 'latitude', 'longitude', 'AQI'])
 
@@ -112,7 +115,7 @@ def map_df(df):
 
     fig.update_layout(mapbox_style='carto-positron')
     fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
-    return fig.show()
+    return pio.write_image(fig, "map.png")
 
 #map_df(df)
 
@@ -145,7 +148,7 @@ def get_labels():
     ])
 
     fig.update_layout(height=180,paper_bgcolor='LightSteelBlue',margin=dict(l=5,r=5,t=5,b=5))
-    return fig.show()
+    return pio.write_image(fig, "table.png")
 
 #get_labels()
 
