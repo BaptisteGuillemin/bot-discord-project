@@ -1,5 +1,6 @@
 import airvisual_api_project as API_Visu
 import discord
+import io
 
 ## Bot informations 
 TOKEN = 'MTAzNDc2MTQ4NDMwNTE4Njg3Ng.GUgzR1.vnjE0PtnFrlaiAZThUG2K71b30pnJ5gxOcOSEI'
@@ -30,8 +31,17 @@ async def on_message(message):
         print(f'message author: {message.author}')
         print(f'message content: {message.content}')
         API_Visu.get_default_visu('Paris', 'Ile-de-France', 'France')
+        
+
+        data_stream = io.BytesIO() ##????????#
+
+
+        chart = discord.File(data_stream, filename="map.png")
+        embed = discord.Embed(title="AQI in Paris",
+                              description="Default example", color=0x00ff00)
+        embed.set_image(url="attachment://map.png")
+        await message.channel.send(embed=embed, file=chart)
     
-    message.channel.send
         
 
 
