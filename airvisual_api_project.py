@@ -7,6 +7,7 @@ Original file is located at
     https://colab.research.google.com/drive/1KGfGPiJGVAEgo_WOgxpUthfwQDOqV7hs
 """
 import pandas as pd
+import numpy as np
 import requests
 import plotly
 import plotly.express as plt
