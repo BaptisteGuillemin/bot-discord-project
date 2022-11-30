@@ -14,6 +14,7 @@ import plotly.graph_objects as go
 import plotly.io as pio
 
 APIkey = "19e55afb-07fc-4b68-b3b8-74c7950f0aee"
+msg_error = "Erreur avec l'API, réessayer plus tard"
 DF = pd.DataFrame(columns = ['country', 'state', 'city', 'latitude', 'longitude', 'AQI'])
 
 """##Principals functions to process data"""
@@ -28,7 +29,7 @@ def get_all_countries():
         countries = [n['country'] for n in dic]
         return countries
     except:
-        return print("erreur avec l'API ")
+        return print(msg_error)
 
 #get_all_countries()
 
@@ -42,7 +43,7 @@ def get_state(country):
         states = [n['state'] for n in dic]
         return states
     except:
-        return print("erreur avec l'API, trop de requête ")
+        return print(msg_error)
 
 #get_state("India")
 
@@ -57,7 +58,7 @@ def get_city(state, country):
         city = [n['city'] for n in dic]
         return city
     except:
-        return print("erreur avec l'API ")
+        return print(msg_error)
 
 #get_city('Delhi', 'India')
 
@@ -97,7 +98,7 @@ def get_aqius(city, state, country):
         return df
 
     except:
-        return print("erreur avec l'API ")
+        return print(msg_error)
 
 """## Visualization functions
 
@@ -155,7 +156,12 @@ def get_labels():
 
 
 def get_default_visu(city,state,country):
-    DF = pd.DataFrame(columns = ['country', 'state', 'city', 'latitude', 'longitude', 'AQI'])
-    DF = DF.append(get_aqius(city, state, country))
-    map_df(DF)
-    get_labels()
+    try:
+        DF = pd.DataFrame(columns = ['country', 'state', 'city', 'latitude', 'longitude', 'AQI'])
+        DF = DF.append(get_aqius(city, state, country))
+        map_df(DF)
+        get_labels()
+
+        return map_df(DF), get_labels()
+    except:
+        return print(msg_error)
