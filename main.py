@@ -1,6 +1,5 @@
 import airvisual_api_project as API_Visu
 import discord
-import io
 
 ## Bot informations 
 TOKEN = 'MTAzNDc2MTQ4NDMwNTE4Njg3Ng.GUgzR1.vnjE0PtnFrlaiAZThUG2K71b30pnJ5gxOcOSEI'
@@ -33,10 +32,17 @@ async def on_message(message):
         API_Visu.get_default_visu('Paris', 'Ile-de-France', 'France')
         
 
-        embed = discord.Embed(title="**AQI in Paris**", url = 'https://www.deq.ok.gov/wp-content/uploads/air-division/aqi_mini.png', description="Default example", color=0x6AA84F) #creates embed
-        file = discord.File("map.png", filename="map.png")
-        embed.set_image(url="attachment://map.png")
-        await message.channel.send(file=file, embed=embed)
+        Map = discord.File("map.png", filename="map.png")
+        Table = discord.File("table.png", filename="table.png")
+
+        embed1 = discord.Embed(title="**AQI in Paris**", url = 'https://www.deq.ok.gov/wp-content/uploads/air-division/aqi_mini.png', description="Default example", color=0x6AA84F) #creates embed
+        embed1.set_image(url="attachment://map.png")
+
+        embed2 = discord.Embed(description="Labels description")
+        embed2.set_image(url="attachment://table.png")
+
+        await message.channel.send(file = Map, embed = embed1)
+        await message.channel.send(file = Table, embed = embed2)
        
 
 
