@@ -1,3 +1,9 @@
+'''
+To Activate virtual environments
+venv\Scripts\activate.bat
+deactivate
+'''
+
 import airvisual_api_project as API_Visu
 import discord
 
@@ -26,7 +32,7 @@ async def on_message(message):
         print(f'message content: {message.content}')
 
     if message.content.startswith('$Get_example') :    
-        await message.channel.send("Here is an example")
+        await message.channel.send("Here is the example")
         print(f'message author: {message.author}')
         print(f'message content: {message.content}')
         API_Visu.get_default_visu('Paris', 'Ile-de-France', 'France')
@@ -35,7 +41,7 @@ async def on_message(message):
         Map = discord.File("map.png", filename="map.png")
         Table = discord.File("table.png", filename="table.png")
 
-        embed1 = discord.Embed(title="**AQI in Paris**", url = 'https://www.deq.ok.gov/wp-content/uploads/air-division/aqi_mini.png', description="Default example", color=0x6AA84F) #creates embed
+        embed1 = discord.Embed(title="**AQI in Paris**", url = 'https://www.epa.gov/sites/default/files/2019-07/aqitableforcourse.png', description="Default example", color=0x6AA84F) #creates embed
         embed1.set_image(url="attachment://map.png")
 
         embed2 = discord.Embed(description="Labels description", color=0x6AA84F)
@@ -95,5 +101,20 @@ async def on_message(message):
         await message.channel.send("--------")
 
         await message.channel.send("Here is the localisation selected : " + "Country : " + Selected_country + ", State : " + Selected_state + ", City : " + Selected_city)
+
+        API_Visu.get_default_visu(Selected_city, Selected_state, Selected_country)
+        
+
+        Map = discord.File("map.png", filename="map.png")
+        Table = discord.File("table.png", filename="table.png")
+
+        embed1 = discord.Embed(title="AQI in" + Selected_city, url = 'https://www.epa.gov/sites/default/files/2019-07/aqitableforcourse.png', description=Selected_city + ', ' + Selected_state + ', ' + Selected_country, color=0x6AA84F) #creates embed
+        embed1.set_image(url="attachment://map.png")
+
+        embed2 = discord.Embed(description="Labels description", color=0x6AA84F)
+        embed2.set_image(url="attachment://table.png")
+
+        await message.channel.send(file = Map, embed = embed1)
+        await message.channel.send(file = Table, embed = embed2)
 
 client.run(TOKEN)
