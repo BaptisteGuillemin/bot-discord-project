@@ -27,22 +27,17 @@ async def on_message(message):
         print(f'message content: {message.content}')
 
     if message.content.startswith('$Get_example') :    
-        await message.channel.send("You have typped Yes")
+        await message.channel.send("Here is an example")
         print(f'message author: {message.author}')
         print(f'message content: {message.content}')
         API_Visu.get_default_visu('Paris', 'Ile-de-France', 'France')
         
 
-        data_stream = io.BytesIO() ##????????#
-
-
-        chart = discord.File(data_stream, filename="map.png")
-        embed = discord.Embed(title="AQI in Paris",
-                              description="Default example", color=0x00ff00)
+        embed = discord.Embed(title="**AQI in Paris**", url = 'https://www.deq.ok.gov/wp-content/uploads/air-division/aqi_mini.png', description="Default example", color=0x6AA84F) #creates embed
+        file = discord.File("map.png", filename="map.png")
         embed.set_image(url="attachment://map.png")
-        await message.channel.send(embed=embed, file=chart)
-    
-        
+        await message.channel.send(file=file, embed=embed)
+       
 
 
             
