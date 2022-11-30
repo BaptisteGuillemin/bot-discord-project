@@ -31,7 +31,8 @@ async def on_message(message):
         print(f'message author: {message.author}')
         print(f'message content: {message.content}')
 
-    if message.content.startswith('$Get_example') :    
+    if message.content.startswith('$Get_example') :
+        channel = message.channel    
         await message.channel.send("Here is the example")
         print(f'message author: {message.author}')
         print(f'message content: {message.content}')
@@ -53,7 +54,8 @@ async def on_message(message):
 
 
             
-    if message.content.startswith('$My_Location'): 
+    if message.content.startswith('$My_Location'):
+        channel = message.channel
         await message.channel.send("Let's choose where you want to visualize the Air Qualit Index !")
         print(f'message author: {message.author}')
         print(f'message content: {message.content}')
@@ -66,7 +68,7 @@ async def on_message(message):
         def check_country(m):
             return m.content in list_countries and m.channel == channel
 
-        msg_country = await client.wait_for('message', check=check_country)
+        msg_country = await client.wait_for('message', check = check_country)
         Selected_country = msg_country.content
         await message.channel.send('Here is the country selected : ' + Selected_country)
         await message.channel.send("--------")
