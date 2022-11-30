@@ -111,7 +111,7 @@ def map_df(df):
 
     fig = plt.scatter_mapbox(df, lat="longitude", lon="latitude", hover_name="city", hover_data=["city", "AQI"], opacity=1,
                             color="AQI", color_continuous_scale= color_scale, range_color=range_color,
-                            size='AQI', size_max=10, zoom=8, height=400, width=600)
+                            size='AQI', size_max=10, zoom=8, height=800, width=100)
 
     fig.update_layout(mapbox_style='carto-positron')
     fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
