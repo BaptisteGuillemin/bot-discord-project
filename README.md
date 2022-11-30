@@ -1,9 +1,5 @@
 # bot-discord-project
 
-venv\Scripts\activate.bat
-deactivate
-
-
 Our bot plot the Air quality of a given city, state, country.
 Following by a table presenting the index and what they means made with matplotlib.
 
@@ -14,5 +10,5 @@ As the API is not working for more than 3 or 4 request in a single function, and
 
 The bot display the 2 visualization with thoses 3 necessary parameters.
 
-$Call_Bot to call the bot in the discord discussion
-$Get_example is a example of visualization with pre define parameters of Paris, Ile-de-France, France.
+    - $Call_Bot => Call the bot in the discord discussion
+    - $Get_example => See an example of visualization with pre define parameters of Paris, Ile-de-France, France.
