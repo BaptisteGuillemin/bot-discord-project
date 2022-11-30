@@ -38,7 +38,7 @@ async def on_message(message):
         embed1 = discord.Embed(title="**AQI in Paris**", url = 'https://www.deq.ok.gov/wp-content/uploads/air-division/aqi_mini.png', description="Default example", color=0x6AA84F) #creates embed
         embed1.set_image(url="attachment://map.png")
 
-        embed2 = discord.Embed(description="Labels description")
+        embed2 = discord.Embed(description="Labels description", color=0x6AA84F)
         embed2.set_image(url="attachment://table.png")
 
         await message.channel.send(file = Map, embed = embed1)
